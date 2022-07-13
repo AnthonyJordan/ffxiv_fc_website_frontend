@@ -1,14 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function NavBar({ user }) {
-  const loginProfile = user ? (
+function NavBar({ user, onLogout }) {
+  const loginOrProfile = user ? (
+    <div>
+      <NavLink className="navButton" exact to="/profile">
+        Profile
+      </NavLink>
+      /<span onClick={onLogout}>Logout</span>
+    </div>
+  ) : (
     <NavLink className="navButton" exact to="/login">
       Sign Up/Login
     </NavLink>
-  ) : (
-    "Profile/Logout"
   );
+
   return (
     <div className="navbar">
       <div>
@@ -26,7 +32,7 @@ function NavBar({ user }) {
           Gallery
         </NavLink>
       </div>
-      <div>{loginProfile}</div>
+      <div>{loginOrProfile}</div>
     </div>
   );
 }

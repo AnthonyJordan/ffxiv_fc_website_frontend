@@ -1,14 +1,16 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Home from "./components/Home";
 import MembersPage from "./components/MembersPage";
 import LoginSignUp from "./components/LoginSignUp";
 import Gallery from "./components/Gallery";
+import Profile from "./components/Profile";
 import React, { useState, useEffect } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+  const history = useHistory();
   // useEffect(() => {
   //   // auto-login
   //   fetch("http://localhost:4000/users/sign_in").then((r) => {
@@ -17,9 +19,13 @@ function App() {
   //     }
   //   });
   // }, []);
+  function logout() {
+    setUser(null);
+    history.push("/");
+  }
   return (
     <div className="App">
-      <NavBar user={user} />
+      <NavBar user={user} onLogout={logout} />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -32,6 +38,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <LoginSignUp onLogin={setUser} />
+        </Route>
+        <Route exact path="/profile">
+          <Profile user={user} />
         </Route>
       </Switch>
     </div>
