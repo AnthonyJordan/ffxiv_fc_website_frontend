@@ -3,8 +3,6 @@ import React, { useState } from "react";
 function SignUpPage({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +11,7 @@ function SignUpPage({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("http://localhost:4000/users", {
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,8 +20,6 @@ function SignUpPage({ onLogin }) {
         email,
         password,
         password_confirmation: passwordConfirmation,
-        first_name: firstName,
-        last_name: lastName,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -59,20 +55,6 @@ function SignUpPage({ onLogin }) {
           id="password"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
-        ></input>
-        <label>Character First Name</label>
-        <input
-          type="text"
-          id="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        ></input>
-        <label>Character Last Name</label>
-        <input
-          type="text"
-          id="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
         ></input>
 
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>

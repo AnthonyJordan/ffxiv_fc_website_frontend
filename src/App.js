@@ -11,14 +11,13 @@ import React, { useState, useEffect } from "react";
 function App() {
   const [user, setUser] = useState(null);
   const history = useHistory();
-  // useEffect(() => {
-  //   // auto-login
-  //   fetch("http://localhost:4000/users/sign_in").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/users/sign_in").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
   function logout() {
     setUser(null);
     history.push("/");

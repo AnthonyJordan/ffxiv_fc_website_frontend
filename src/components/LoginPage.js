@@ -9,13 +9,13 @@ function LoginPage({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("http://localhost:4000/users/sign_in", {
+    fetch("/users/sign_in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email.toLowerCase(),
+        email,
         password,
       }),
     }).then((r) => {

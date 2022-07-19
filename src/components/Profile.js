@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
 function Profile({ user }) {
-  const [formData, setFormData] = useState(
-    user ? user : { first_name: "", last_name: "", role: "", bio: "" }
-  );
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    house_location: "",
+    role: "",
+    bio: "",
+  });
 
   function handleChange(e) {
     setFormData({
@@ -15,8 +19,8 @@ function Profile({ user }) {
   function handleProfilePicSubmit(e) {
     e.preventDefault();
     const data = new FormData();
-    data.append("user[profile_picture]", e.target.profile_picture.files[0]);
-    data.append("user[id]", user.id);
+    data.append("profile_picture", e.target.profile_picture.files[0]);
+    data.append("id", user.id);
     sendToApi(data);
   }
 
@@ -26,16 +30,12 @@ function Profile({ user }) {
   }
 
   function sendToApi(data) {
-    fetch(`http://localhost:4000/users`, {
-      headers: {
-        "X-User-Email": user.email,
-        "X-User-Token": user.authentication_token,
-      },
+    fetch(`/users/${user.id}`, {
       method: "PATCH",
       body: data,
     })
-      .then((res) => res.json)
-      .then((data) => console.log(data));
+      .then((res) => res.json())
+      .then((user) => console.log(user));
   }
 
   return (

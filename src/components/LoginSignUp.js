@@ -7,7 +7,7 @@ function LoginSignUp({ onLogin }) {
   return (
     <div className="LoginSignUp">
       <button onClick={() => setLoginBool(!loginBool)}>
-        {loginBool ? "Login" : "Sign Up"}{" "}
+        {loginBool ? "Sign Up" : "Login"}{" "}
       </button>
       {loginBool ? (
         <LoginPage onLogin={onLogin} />
