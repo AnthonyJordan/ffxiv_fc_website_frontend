@@ -5,9 +5,55 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color:rgba(255, 255, 255, 0.768)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.main{
+  height: 92vh;
+}
+.logout{
+  color: rgb(143, 151, 236);
+  text-decoration: underline;
+  font-weight: bold;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-image:linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url("../public/moogles.PNG");
+  background-position: center;
+  background-size: 25%;
+}
+.navButton{
+  font-weight: bold;
+  color: rgb(143, 151, 236);
+}
+.display{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image:linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url("../public/ff14background.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  top: 51px;
+  height: 100%;
+  text-align: center;
 }

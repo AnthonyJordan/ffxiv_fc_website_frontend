@@ -7,7 +7,10 @@ function NavBar({ user, onLogout }) {
       <NavLink className="navButton" exact to="/profile">
         Profile
       </NavLink>
-      /<span onClick={onLogout}>Logout</span>
+      /
+      <span onClick={onLogout} className={"logout"}>
+        Logout
+      </span>
     </div>
   ) : (
     <NavLink className="navButton" exact to="/login">

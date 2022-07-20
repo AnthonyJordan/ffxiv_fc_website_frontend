@@ -2,7 +2,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Home from "./components/Home";
-import MembersPage from "./components/MembersPage";
+import CharactersPage from "./components/CharactersPage";
 import LoginSignUp from "./components/LoginSignUp";
 import Gallery from "./components/Gallery";
 import Profile from "./components/Profile";
@@ -23,25 +23,27 @@ function App() {
     history.push("/");
   }
   return (
-    <div className="App">
+    <div className="main">
       <NavBar user={user} onLogout={logout} />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/members">
-          <MembersPage />
-        </Route>
-        <Route exact path="/gallery">
-          <Gallery />
-        </Route>
-        <Route exact path="/login">
-          <LoginSignUp onLogin={setUser} />
-        </Route>
-        <Route exact path="/profile">
-          <Profile user={user} />
-        </Route>
-      </Switch>
+      <div className="display">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/members">
+            <CharactersPage user={user} />
+          </Route>
+          <Route exact path="/gallery">
+            <Gallery />
+          </Route>
+          <Route exact path="/login">
+            <LoginSignUp onLogin={setUser} />
+          </Route>
+          <Route exact path="/profile">
+            <Profile user={user} onUserUpdate={setUser} />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }
