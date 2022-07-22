@@ -57,3 +57,49 @@ code {
   height: 100%;
   text-align: center;
 }
+
+.characterdisplay{
+  background-color: rgb(41, 16, 63, .7);
+  border-radius: 25px;
+  margin: 10px;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.charlabel{
+  font-weight: bold;
+}
+.characterPictureBox{
+  background-color: rgba(58, 54, 150, 0.7);
+  border-radius: 25px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.characterPictureForm{
+  border-color: black;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 4px;
+  background-color: black;
+  
+}
+
+.characterPictureForm button{
+  border-radius: 25px;
+}
+.characterPictureForm input{
+  border-radius: 25px;
+}
+.characterCreateForm{
+  background-color: rgba(150, 54, 113, 0.7);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+textarea{
+  height: 100px;
+  width: 200px;
+}
