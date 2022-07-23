@@ -28,7 +28,7 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
       .then((character) => onCharacterUpdate(character));
   }
   return (
-    <div className={"characterPictureBox"}>
+    <div className="characterPictureBox">
       <div className="character-select">
         <select name="character_id" onChange={(e) => handleFormChange(e)}>
           <option value="0">Select Character:</option>

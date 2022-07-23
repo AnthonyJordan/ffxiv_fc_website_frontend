@@ -18,13 +18,15 @@ function CharacterDisplay({ character }) {
           height="200"
         />
       </div>
-      <div className="charlabel">Name:</div>
-      <div>{character.first_name + " " + character.last_name}</div>
-      <div className="charlabel">FC Role:</div>
-      <div>{character.role}</div>
-      {houseLoc}
-      <div className="charlabel">About:</div>
-      <div>{character.bio}</div>
+      <div className="characterInfo">
+        <div className="charlabel">Name:</div>
+        <div>{character.first_name + " " + character.last_name}</div>
+        <div className="charlabel">FC Role:</div>
+        <div>{character.role}</div>
+        {houseLoc}
+        <div className="charlabel">About:</div>
+        <div>{character.bio}</div>
+      </div>
     </div>
   );
 }

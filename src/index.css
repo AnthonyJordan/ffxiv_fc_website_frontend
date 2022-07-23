@@ -40,9 +40,7 @@ code {
   color: rgb(143, 151, 236);
 }
 .display{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
   background-image:linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
@@ -54,19 +52,32 @@ code {
   padding-bottom: 10px;
   position: relative;
   top: 51px;
-  height: 100%;
+  height: fit-content;
+  min-height: 100%;
   text-align: center;
+}
+.characters{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .characterdisplay{
   background-color: rgb(41, 16, 63, .7);
   border-radius: 25px;
   margin: 10px;
-  display: inline-block;
+  display: flex;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
+  flex-basis: 30%;
+}
+.characterInfo{
+  display: grid;
+  text-align: left;
+  vertical-align: bottom;
+  margin-left: 10px
 }
 .charlabel{
   font-weight: bold;
@@ -95,11 +106,29 @@ code {
 }
 .characterCreateForm{
   background-color: rgba(150, 54, 113, 0.7);
+ 
+}
+
+.forms{ 
   border-radius: 25px;
   padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 textarea{
   height: 100px;
   width: 200px;
+}
+.characterForms{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.deletecharacter{
+  background-color: rgba(166, 48, 30, 0.7);
+}
+.characterEditForm{
+  background-color: rgba(20, 94, 99, 0.7);
 }

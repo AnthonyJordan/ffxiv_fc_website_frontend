@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-function AddCharacterForm({ user, onAddCharacter }) {
+function EditCharacterForm({ user, characters, onCharacterUpdate }) {
+  const [characterSelection, setCharacterSelection] = useState(0);
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -9,6 +9,12 @@ function AddCharacterForm({ user, onAddCharacter }) {
     bio: "",
     user_id: user ? user.id : null,
   });
+
+  const options = characters.map((character) => (
+    <option key={character.id} value={character.id}>
+      {character.first_name + " " + character.last_name}
+    </option>
+  ));
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -16,14 +22,14 @@ function AddCharacterForm({ user, onAddCharacter }) {
     });
   }
 
-  function createCharacter(e) {
+  function editCharacter(e) {
     e.preventDefault();
     sendCharacterToApi(formData);
   }
 
   function sendCharacterToApi(data) {
-    fetch(`/characters`, {
-      method: "POST",
+    fetch(`/characters/${characterSelection}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -31,7 +37,7 @@ function AddCharacterForm({ user, onAddCharacter }) {
     })
       .then((res) => res.json())
       .then((character) => {
-        onAddCharacter(character);
+        onCharacterUpdate(character);
         setFormData({
           first_name: "",
           last_name: "",
@@ -42,10 +48,35 @@ function AddCharacterForm({ user, onAddCharacter }) {
         });
       });
   }
+
+  function handleCharacterSelect(e) {
+    const characterChoice = characters.find(
+      (character) => character.id == e.target.value
+    );
+    const newFormData = {
+      first_name: characterChoice.first_name,
+      last_name: characterChoice.last_name,
+      house_location: characterChoice.house_location,
+      role: characterChoice.role,
+      bio: characterChoice.bio,
+      user_id: user ? user.id : null,
+    };
+    setCharacterSelection(e.target.value);
+    setFormData(newFormData);
+  }
   return (
-    <div className="characterCreateForm forms">
-      <form onSubmit={(e) => createCharacter(e)}>
-        <div>Add New Character</div>
+    <div className="characterEditForm forms">
+      <form onSubmit={(e) => editCharacter(e)}>
+        <div>Edit Character</div>
+        <div className="character-select">
+          <select
+            name="character_id"
+            onChange={(e) => handleCharacterSelect(e)}
+          >
+            <option value="0">Select Character:</option>
+            {options}
+          </select>
+        </div>
         <div>
           <label>First Name: </label>
           <input
@@ -95,4 +126,4 @@ function AddCharacterForm({ user, onAddCharacter }) {
   );
 }
 
-export default AddCharacterForm;
+export default EditCharacterForm;

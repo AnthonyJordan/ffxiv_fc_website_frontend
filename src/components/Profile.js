@@ -3,8 +3,10 @@ import { Redirect } from "react-router-dom";
 import CharacterDisplay from "./CharacterDisplay";
 import AddCharacterForm from "./Forms/AddCharacterForm";
 import CharacterPictureForm from "./Forms/CharacterPictureForm";
+import DeleteCharacterForm from "./Forms/DeleteCharacterForm";
+import EditCharacterForm from "./Forms/EditCharacterForm";
 
-function Profile({ user, onUserUpdate }) {
+function Profile({ user }) {
   const [characters, setCharacters] = useState([]);
 
   const characterDisplays = characters.map((character) => (
@@ -36,18 +38,34 @@ function Profile({ user, onUserUpdate }) {
     setCharacters(updatedCharacters);
   }
 
+  function handleDeleteCharacter(id) {
+    const updatedCharacters = characters.filter(
+      (character) => character.id != id
+    );
+    setCharacters(updatedCharacters);
+  }
+
   if (!user) {
     return <Redirect to="/" />;
   }
   return (
     <div className="profile">
-      {characterDisplays}
+      <div className="characters">{characterDisplays}</div>
       <CharacterPictureForm
         characters={characters}
         onCharacterUpdate={handleCharaterUpdate}
       />
-      <div>
+      <div className="characterForms">
         <AddCharacterForm user={user} onAddCharacter={handleAddCharacter} />
+        <EditCharacterForm
+          user={user}
+          characters={characters}
+          onCharacterUpdate={handleCharaterUpdate}
+        />
+        <DeleteCharacterForm
+          characters={characters}
+          onCharacterDelete={handleDeleteCharacter}
+        />
       </div>
     </div>
   );
