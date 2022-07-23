@@ -1,5 +1,14 @@
-function CharactersList() {
-  return <div className="characterslist"></div>;
+function CharactersList({ characters, onCharacterClick }) {
+  const charactersLis = characters.map((character) => (
+    <li onClick={() => onCharacterClick(character)}>
+      {character.first_name + " " + character.last_name}
+    </li>
+  ));
+  return (
+    <div className="characterslist">
+      <ul>{charactersLis}</ul>
+    </div>
+  );
 }
 
 export default CharactersList;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CharacterPictureForm({ characters, onCharacterUpdate }) {
+function ScreenshotForm({ characters, onCharacterUpdate }) {
   const [characterSelection, setCharacterSelection] = useState(0);
   const options = characters.map((character) => (
     <option key={character.id} value={character.id}>
@@ -11,39 +11,39 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
   function handleFormChange(e) {
     setCharacterSelection(e.target.value);
   }
-  function handleCharacterPicSubmit(e) {
+  function handleScreenShotSubmit(e) {
     e.preventDefault();
     const data = new FormData();
-    data.append("character_picture", e.target.character_picture.files[0]);
-    data.append("id", characterSelection);
+    data.append("screenshot", e.target.screenshot.files[0]);
+    data.append("character_id", characterSelection);
     sendPictureToApi(data);
   }
 
   function sendPictureToApi(data) {
-    fetch(`/characters/${characterSelection}`, {
-      method: "PATCH",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((character) => onCharacterUpdate(character));
+    // fetch(`/characters/${characterSelection}/screenshots`, {
+    //   method: "POST",
+    //   body: data,
+    // })
+    //   .then((res) => res.json())
+    //   .then((character) => onCharacterUpdate(character));
   }
   return (
-    <div className="characterPictureBox">
-      <div>Upload Character Picture</div>
+    <div className="screenshotBox">
+      <div>Upload Screenshot</div>
       <div className="character-select">
         <select name="character_id" onChange={(e) => handleFormChange(e)}>
           <option value="0">Select Character:</option>
           {options}
         </select>
       </div>
-      <div className="characterPictureForm">
-        <form onSubmit={(e) => handleCharacterPicSubmit(e)}>
-          <input type="file" name="character_picture" />
-          <button type="submit">Upload Character Picture</button>
+      <div className="screenshotForm">
+        <form onSubmit={(e) => handleScreenShotSubmit(e)}>
+          <input type="file" name="screenshot" />
+          <button type="submit">Upload image</button>
         </form>
       </div>
     </div>
   );
 }
 
-export default CharacterPictureForm;
+export default ScreenshotForm;

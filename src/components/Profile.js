@@ -5,6 +5,7 @@ import AddCharacterForm from "./Forms/AddCharacterForm";
 import CharacterPictureForm from "./Forms/CharacterPictureForm";
 import DeleteCharacterForm from "./Forms/DeleteCharacterForm";
 import EditCharacterForm from "./Forms/EditCharacterForm";
+import ScreenshotForm from "./Forms/ScreenshotForm";
 
 function Profile({ user }) {
   const [characters, setCharacters] = useState([]);
@@ -51,10 +52,13 @@ function Profile({ user }) {
   return (
     <div className="profile">
       <div className="characters">{characterDisplays}</div>
-      <CharacterPictureForm
-        characters={characters}
-        onCharacterUpdate={handleCharaterUpdate}
-      />
+      <div>
+        <CharacterPictureForm
+          characters={characters}
+          onCharacterUpdate={handleCharaterUpdate}
+        />
+        <ScreenshotForm characters={characters} />
+      </div>
       <div className="characterForms">
         <AddCharacterForm user={user} onAddCharacter={handleAddCharacter} />
         <EditCharacterForm

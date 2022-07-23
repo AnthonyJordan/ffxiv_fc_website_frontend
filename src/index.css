@@ -83,6 +83,7 @@ code {
   font-weight: bold;
 }
 .characterPictureBox{
+  display: inline-block;
   background-color: rgba(58, 54, 150, 0.7);
   border-radius: 25px;
   margin: 10px;
@@ -102,6 +103,30 @@ code {
   border-radius: 25px;
 }
 .characterPictureForm input{
+  border-radius: 25px;
+}
+
+.screenshotBox{
+  display: inline-block;
+  background-color: rgba(49, 71, 28, 0.7);
+  border-radius: 25px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.screenshotForm{
+  border-color: black;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 4px;
+  background-color: black;
+  
+}
+
+.screenshotForm button{
+  border-radius: 25px;
+}
+.screenshotForm input{
   border-radius: 25px;
 }
 .characterCreateForm{
@@ -131,4 +156,16 @@ textarea{
 }
 .characterEditForm{
   background-color: rgba(20, 94, 99, 0.7);
+}
+
+.characterslist{
+  border-radius: 25px;
+  background-color: rgba(201, 48, 120, 0.7);
+  text-align: left;
+ margin-left: 10px; 
+  
+}
+.characterspage{
+  display: grid;
+  grid-template-columns: 10% 1fr;
 }
