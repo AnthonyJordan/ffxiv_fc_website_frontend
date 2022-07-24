@@ -6,6 +6,7 @@ import CharacterPictureForm from "./Forms/CharacterPictureForm";
 import DeleteCharacterForm from "./Forms/DeleteCharacterForm";
 import EditCharacterForm from "./Forms/EditCharacterForm";
 import ScreenshotForm from "./Forms/ScreenshotForm";
+import CharacterGallery from "./CharacterGallery";
 
 function Profile({ user }) {
   const [characters, setCharacters] = useState([]);
@@ -13,7 +14,12 @@ function Profile({ user }) {
   const characterDisplays = characters.map((character) => (
     <CharacterDisplay key={character.id} character={character} />
   ));
-
+  const characterGalleries = characters.map((character) => (
+    <div className="profileGallery">
+      {character.first_name + " " + character.last_name}
+      <CharacterGallery character={character} />
+    </div>
+  ));
   useEffect(() => {
     if (user) {
       fetch(`/user/${user.id}/characters`).then((r) => {
@@ -46,7 +52,13 @@ function Profile({ user }) {
     setCharacters(updatedCharacters);
   }
 
-  function handleNewScreenshot(screenshot) {}
+  function handleNewScreenshot(characterId) {
+    const character = characters.find(
+      (character) => character.id == characterId
+    );
+    const clone = structuredClone(character);
+    handleCharaterUpdate(clone);
+  }
 
   if (!user) {
     return <Redirect to="/" />;
@@ -64,6 +76,7 @@ function Profile({ user }) {
           onNewScreenshot={handleNewScreenshot}
         />
       </div>
+      <div>{characterGalleries}</div>
       <div className="characterForms">
         <AddCharacterForm user={user} onAddCharacter={handleAddCharacter} />
         <EditCharacterForm

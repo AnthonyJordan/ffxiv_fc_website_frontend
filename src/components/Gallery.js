@@ -10,11 +10,10 @@ function Gallery({ user }) {
     });
   }, []);
   const ssCards = screenshots.map((screenshot) => (
-    <div className="ssCard">
+    <div key={screenshot.id} className="ssCard">
       <img
         className="screenshot"
         alt="screenshot"
-        key={screenshot.id}
         src={screenshot.screenshot_image_url}
       />
       <div>

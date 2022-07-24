@@ -29,7 +29,7 @@ function ScreenshotForm({ characters, onNewScreenshot }) {
       body: data,
     }).then((r) => {
       if (r.ok) {
-        r.json().then((screenshot) => onNewScreenshot(screenshot));
+        r.json().then(() => onNewScreenshot(characterSelection));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
