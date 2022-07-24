@@ -10,12 +10,21 @@ function Gallery({ user }) {
     });
   }, []);
   const ssCards = screenshots.map((screenshot) => (
-    <img
-      className="screenshot"
-      alt="screenshot"
-      key={screenshot.id}
-      src={screenshot.screenshot_image_url}
-    />
+    <div className="ssCard">
+      <img
+        className="screenshot"
+        alt="screenshot"
+        key={screenshot.id}
+        src={screenshot.screenshot_image_url}
+      />
+      <div>
+        Uploaded by:
+        {" " +
+          screenshot.character.first_name +
+          " " +
+          screenshot.character.last_name}
+      </div>
+    </div>
   ));
   return <div className="gallery">{ssCards}</div>;
 }

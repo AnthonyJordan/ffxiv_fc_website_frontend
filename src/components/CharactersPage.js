@@ -9,7 +9,7 @@ function CharactersPage() {
   const selectionDiv = character.first_name ? (
     <div>
       <CharacterDisplay character={character} />
-      <CharacterGallery />
+      <CharacterGallery character={character} />
     </div>
   ) : null;
   useEffect(() => {

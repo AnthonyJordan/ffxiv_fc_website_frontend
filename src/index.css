@@ -133,7 +133,32 @@ code {
   background-color: rgba(150, 54, 113, 0.7);
  
 }
+.screenshot{
+  max-width: 200px;
+  max-height: 200px;
 
+}
+.ssCard{
+  background-color: rgba(150, 54, 113, 0.7);
+  border-radius: 25px;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+}
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 10px;
+  justify-items: center;
+  align-items:start;
+}
+.charactergallery{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 10px;
+  justify-items: center;
+  align-items:start;
+}
 .forms{ 
   border-radius: 25px;
   padding: 10px;
