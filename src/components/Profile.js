@@ -46,6 +46,8 @@ function Profile({ user }) {
     setCharacters(updatedCharacters);
   }
 
+  function handleNewScreenshot(screenshot) {}
+
   if (!user) {
     return <Redirect to="/" />;
   }
@@ -57,7 +59,10 @@ function Profile({ user }) {
           characters={characters}
           onCharacterUpdate={handleCharaterUpdate}
         />
-        <ScreenshotForm characters={characters} />
+        <ScreenshotForm
+          characters={characters}
+          onNewScreenshot={handleNewScreenshot}
+        />
       </div>
       <div className="characterForms">
         <AddCharacterForm user={user} onAddCharacter={handleAddCharacter} />

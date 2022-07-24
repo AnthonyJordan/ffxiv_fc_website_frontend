@@ -34,7 +34,7 @@ function App() {
             <CharactersPage user={user} />
           </Route>
           <Route exact path="/gallery">
-            <Gallery />
+            <Gallery user={user} />
           </Route>
           <Route exact path="/login">
             <LoginSignUp onLogin={setUser} />
