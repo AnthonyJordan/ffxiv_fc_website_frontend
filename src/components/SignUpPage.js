@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
-function SignUpPage({ onLogin }) {
+function SignUpPage({ onLogin, user }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -29,6 +30,9 @@ function SignUpPage({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+  }
+  if (user) {
+    return <Redirect to="/profile" />;
   }
   return (
     <div className="signUpPage">

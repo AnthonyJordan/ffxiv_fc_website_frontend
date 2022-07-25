@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, user }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +27,9 @@ function LoginPage({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+  }
+  if (user) {
+    return <Redirect to="/profile" />;
   }
   return (
     <div className="loginPage">

@@ -3,13 +3,13 @@ import CharacterDisplay from "./CharacterDisplay";
 import CharacterGallery from "./CharacterGallery";
 import CharactersList from "./CharactersList";
 
-function CharactersPage() {
+function CharactersPage({ user }) {
   const [characters, setCharacters] = useState([]);
   const [character, setCharacter] = useState([]);
   const selectionDiv = character.first_name ? (
     <div>
       <CharacterDisplay character={character} />
-      <CharacterGallery character={character} />
+      <CharacterGallery character={character} user={user} />
     </div>
   ) : null;
   useEffect(() => {

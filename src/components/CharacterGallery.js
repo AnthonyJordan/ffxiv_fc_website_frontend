@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ImageModal from "./ImageModal";
+import ScreenshotCard from "./ScreenshotCard";
 
-function CharacterGallery({ character }) {
+function CharacterGallery({ character, user }) {
   const [screenshots, setScreenshots] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [ssSelection, setSSSelection] = useState([]);
@@ -12,21 +13,23 @@ function CharacterGallery({ character }) {
       }
     });
   }, [character]);
+
+  function handleDeleteScreenshot(screenshotId) {
+    const updatedScreenshots = screenshots.filter(
+      (screenshot) => screenshot.id !== screenshotId
+    );
+    setScreenshots(updatedScreenshots);
+  }
+  function onSSClick(screenshot) {
+    setSSSelection(screenshot);
+    setModalOpen(true);
+  }
   const ssCards = screenshots.map((screenshot) => (
-    <div
+    <ScreenshotCard
       key={screenshot.id}
-      className="ssCard"
-      onClick={() => {
-        setSSSelection(screenshot);
-        setModalOpen(true);
-      }}
-    >
-      <img
-        className="screenshot"
-        alt="screenshot"
-        src={screenshot.screenshot_image_url}
-      />
-    </div>
+      screenshot={screenshot}
+      handleClick={onSSClick}
+    />
   ));
   if (modalOpen) {
     document.body.classList.add("activeModal");
@@ -37,7 +40,12 @@ function CharacterGallery({ character }) {
     <div className="charactergallery">
       {ssCards}
       {modalOpen && (
-        <ImageModal screenshot={ssSelection} closeModal={setModalOpen} />
+        <ImageModal
+          screenshot={ssSelection}
+          closeModal={setModalOpen}
+          user={user}
+          onSSDelete={handleDeleteScreenshot}
+        />
       )}
     </div>
   );

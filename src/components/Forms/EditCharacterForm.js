@@ -24,6 +24,9 @@ function EditCharacterForm({ user, characters, onCharacterUpdate }) {
 
   function editCharacter(e) {
     e.preventDefault();
+    if (characterSelection === 0) {
+      return;
+    }
     sendCharacterToApi(formData);
   }
 

@@ -37,7 +37,7 @@ function App() {
             <Gallery user={user} />
           </Route>
           <Route exact path="/login">
-            <LoginSignUp onLogin={setUser} />
+            <LoginSignUp onLogin={setUser} user={user} />
           </Route>
           <Route exact path="/profile">
             <Profile user={user} onUserUpdate={setUser} />

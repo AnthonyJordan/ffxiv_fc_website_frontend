@@ -17,7 +17,7 @@ function Profile({ user }) {
   const characterGalleries = characters.map((character) => (
     <div className="profileGallery">
       {character.first_name + " " + character.last_name}
-      <CharacterGallery character={character} />
+      <CharacterGallery character={character} user={user} />
     </div>
   ));
   useEffect(() => {
@@ -28,7 +28,7 @@ function Profile({ user }) {
         }
       });
     }
-  }, []);
+  }, [user]);
 
   function handleAddCharacter(character) {
     const updatedCharacters = [...characters, character];

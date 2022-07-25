@@ -13,6 +13,9 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
   }
   function handleCharacterPicSubmit(e) {
     e.preventDefault();
+    if (characterSelection === 0) {
+      return;
+    }
     const data = new FormData();
     data.append("character_picture", e.target.character_picture.files[0]);
     data.append("id", characterSelection);

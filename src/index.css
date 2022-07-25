@@ -149,8 +149,10 @@ code {
   padding: 10px;
   border-style: solid;
   border-color: black;
+  margin-top: auto;
+  margin-bottom: auto;
 }
-.modalContainer div{
+.modalClose {
   text-align: right;
   padding-bottom: 3px;
 }
@@ -164,7 +166,10 @@ code {
   background-color: rgba(37, 36, 36, 0.7);
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 2;
+  overflow-y:auto;
 }
 .ssCard{
   background-color: rgba(150, 54, 113, 0.7);
@@ -231,4 +236,28 @@ textarea{
 }
 .activeModal{
   overflow-y: hidden;
+}
+
+.commentPic{
+  border-radius: 25px;
+  max-width: 100px;
+  max-height: 100px;
+}
+.commentDisplay{
+  border-radius: 25px;
+  background-color: rgba(90, 98, 192, 0.7);
+  display:grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-items: start;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.commentBox{
+  margin-left: 10px;
+ 
+}
+.deleteComment{
+justify-self: end;
+margin-right: 10px;
 }
