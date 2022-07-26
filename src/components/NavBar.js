@@ -8,7 +8,7 @@ function NavBar({ user, onLogout }) {
         Profile
       </NavLink>
       /
-      <span onClick={onLogout} className={"logout"}>
+      <span onClick={onLogout} className={"logout pointer"}>
         Logout
       </span>
     </div>

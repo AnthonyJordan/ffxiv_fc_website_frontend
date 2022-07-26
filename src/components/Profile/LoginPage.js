@@ -34,23 +34,25 @@ function LoginPage({ onLogin, user }) {
   return (
     <div className="loginPage">
       <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-
-        <label>Password</label>
-        <input
-          type="text"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-
-        <button type="submit">{isLoading ? "Loading..." : "Sign In"}</button>
+        <div>
+          <label>Email</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="text"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+        </div>
+        <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
 
         <div>{errors}</div>
       </form>

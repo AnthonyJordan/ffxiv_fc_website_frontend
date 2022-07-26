@@ -1,6 +1,6 @@
 function ScreenshotCard({ screenshot, handleClick }) {
   return (
-    <div className="ssCard" onClick={() => handleClick(screenshot)}>
+    <div className="ssCard pointer" onClick={() => handleClick(screenshot)}>
       <img
         className="screenshot"
         alt="screenshot"

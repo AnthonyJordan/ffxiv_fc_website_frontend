@@ -2,10 +2,10 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Home from "./components/Home";
-import CharactersPage from "./components/CharactersPage";
-import LoginSignUp from "./components/LoginSignUp";
-import Gallery from "./components/Gallery";
-import Profile from "./components/Profile";
+import CharactersPage from "./components/CharacterPages/CharactersPage";
+import LoginSignUp from "./components/Profile/LoginSignUp";
+import Gallery from "./components/Gallery/Gallery";
+import Profile from "./components/Profile/Profile";
 import React, { useState, useEffect } from "react";
 
 function App() {

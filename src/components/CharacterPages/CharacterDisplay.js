@@ -5,9 +5,21 @@ function CharacterDisplay({ character }) {
       <div>{character.house_location}</div>
     </>
   ) : null;
+  const role = character.role ? (
+    <>
+      <div className="charlabel">FC Role:</div>
+      <div>{character.role}</div>
+    </>
+  ) : null;
+  const about = character.bio ? (
+    <>
+      <div className="charlabel">About:</div>
+      <div>{character.bio}</div>
+    </>
+  ) : null;
   const character_picture_url = character?.character_picture_url
     ? character.character_picture_url
-    : require("../default_avatar.jpg");
+    : require("../../default_avatar.jpg");
   return (
     <div className="characterdisplay">
       <div>
@@ -21,11 +33,9 @@ function CharacterDisplay({ character }) {
       <div className="characterInfo">
         <div className="charlabel">Name:</div>
         <div>{character.first_name + " " + character.last_name}</div>
-        <div className="charlabel">FC Role:</div>
-        <div>{character.role}</div>
+        {role}
         {houseLoc}
-        <div className="charlabel">About:</div>
-        <div>{character.bio}</div>
+        {about}
       </div>
     </div>
   );

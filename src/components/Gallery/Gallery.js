@@ -2,17 +2,23 @@ import React, { useState, useEffect } from "react";
 import ImageModal from "./ImageModal";
 import ScreenshotCard from "./ScreenshotCard";
 
-function Gallery({ user }) {
+function Gallery({ character, user }) {
   const [screenshots, setScreenshots] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [ssSelection, setSSSelection] = useState([]);
   useEffect(() => {
-    fetch("/screenshots").then((r) => {
-      if (r.ok) {
-        r.json().then((screenshots) => setScreenshots(screenshots));
-      }
-    });
-  }, []);
+    character
+      ? fetch(`/characters/${character.id}/screenshots`).then((r) => {
+          if (r.ok) {
+            r.json().then((screenshots) => setScreenshots(screenshots));
+          }
+        })
+      : fetch("/screenshots").then((r) => {
+          if (r.ok) {
+            r.json().then((screenshots) => setScreenshots(screenshots));
+          }
+        });
+  }, [character]);
   function handleDeleteScreenshot(screenshotId) {
     const updatedScreenshots = screenshots.filter(
       (screenshot) => screenshot.id !== screenshotId

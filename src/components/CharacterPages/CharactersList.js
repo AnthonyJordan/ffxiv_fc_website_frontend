@@ -6,7 +6,7 @@ function CharactersList({ characters, onCharacterClick }) {
   ));
   return (
     <div className="characterslist">
-      <ul>{charactersList}</ul>
+      <ul className="characterULE pointer">{charactersList}</ul>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AddCommentForm from "./Forms/AddCommentForm";
+import AddCommentForm from "../Forms/AddCommentForm";
 import CommentDisplay from "./CommentDisplay";
 
 function ImageModal({ screenshot, closeModal, user, onSSDelete }) {
@@ -31,7 +31,7 @@ function ImageModal({ screenshot, closeModal, user, onSSDelete }) {
     });
   }
   const deleteButton =
-    user.id === screenshot.user_id || user.admin ? (
+    user?.id === screenshot.user_id || user?.admin ? (
       <button onClick={deleteScreenshot}>Delete Picture</button>
     ) : null;
 
@@ -56,7 +56,11 @@ function ImageModal({ screenshot, closeModal, user, onSSDelete }) {
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="modalClose">
-          <button id="closeBtn" onClick={() => closeModal(false)}>
+          <button
+            id="closeBtn"
+            className="pointer"
+            onClick={() => closeModal(false)}
+          >
             X
           </button>
         </div>

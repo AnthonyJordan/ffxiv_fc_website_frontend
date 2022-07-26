@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CharacterDisplay from "./CharacterDisplay";
-import CharacterGallery from "./CharacterGallery";
+import Gallery from "../Gallery/Gallery";
 import CharactersList from "./CharactersList";
 
 function CharactersPage({ user }) {
@@ -9,7 +9,7 @@ function CharactersPage({ user }) {
   const selectionDiv = character.first_name ? (
     <div>
       <CharacterDisplay character={character} />
-      <CharacterGallery character={character} user={user} />
+      <Gallery character={character} user={user} />
     </div>
   ) : null;
   useEffect(() => {

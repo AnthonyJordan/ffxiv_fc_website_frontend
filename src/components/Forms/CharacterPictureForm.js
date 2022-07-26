@@ -20,6 +20,7 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
     data.append("character_picture", e.target.character_picture.files[0]);
     data.append("id", characterSelection);
     sendPictureToApi(data);
+    document.getElementById("character_picture").value = "";
   }
 
   function sendPictureToApi(data) {
@@ -41,7 +42,7 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
       </div>
       <div className="characterPictureForm">
         <form onSubmit={(e) => handleCharacterPicSubmit(e)}>
-          <input type="file" name="character_picture" />
+          <input type="file" name="character_picture" id="character_picture" />
           <button type="submit">Upload Character Picture</button>
         </form>
       </div>

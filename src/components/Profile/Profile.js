@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import CharacterDisplay from "./CharacterDisplay";
-import AddCharacterForm from "./Forms/AddCharacterForm";
-import CharacterPictureForm from "./Forms/CharacterPictureForm";
-import DeleteCharacterForm from "./Forms/DeleteCharacterForm";
-import EditCharacterForm from "./Forms/EditCharacterForm";
-import ScreenshotForm from "./Forms/ScreenshotForm";
-import CharacterGallery from "./CharacterGallery";
+import CharacterDisplay from "../CharacterPages/CharacterDisplay";
+import AddCharacterForm from "../Forms/AddCharacterForm";
+import CharacterPictureForm from "../Forms/CharacterPictureForm";
+import DeleteCharacterForm from "../Forms/DeleteCharacterForm";
+import EditCharacterForm from "../Forms/EditCharacterForm";
+import ScreenshotForm from "../Forms/ScreenshotForm";
+import Gallery from "../Gallery/Gallery";
 
 function Profile({ user }) {
   const [characters, setCharacters] = useState([]);
@@ -17,7 +17,7 @@ function Profile({ user }) {
   const characterGalleries = characters.map((character) => (
     <div className="profileGallery">
       {character.first_name + " " + character.last_name}
-      <CharacterGallery character={character} user={user} />
+      <Gallery character={character} user={user} />
     </div>
   ));
   useEffect(() => {

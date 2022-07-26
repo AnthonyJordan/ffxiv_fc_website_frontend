@@ -35,7 +35,7 @@ function AddCommentForm({ user, screenshot, onAddComment }) {
       }),
     })
       .then((res) => res.json())
-      .then((comment) => onAddComment(comment));
+      .then((comment) => onAddComment(comment), setComment(""));
   }
   const options = characters.map((character) => (
     <option key={character.id} value={character.id}>

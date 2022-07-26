@@ -5,6 +5,7 @@ function SignUpPage({ onLogin, user }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,6 +22,7 @@ function SignUpPage({ onLogin, user }) {
         email,
         password,
         password_confirmation: passwordConfirmation,
+        inviteCode,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -37,33 +39,44 @@ function SignUpPage({ onLogin, user }) {
   return (
     <div className="signUpPage">
       <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-
-        <label>Password</label>
-        <input
-          type="text"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-
-        <label>Confirm Password</label>
-        <input
-          type="text"
-          id="password"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        ></input>
-
+        <div>
+          <label>Email</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="text"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>Confirm Password</label>
+          <input
+            type="text"
+            id="password"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>FC Invite Code</label>
+          <input
+            type="text"
+            id="inviteCode"
+            value={inviteCode}
+            onChange={(e) => setInviteCode(e.target.value)}
+          ></input>
+        </div>
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-
-        {errors}
+        <div>{errors}</div>
       </form>
     </div>
   );

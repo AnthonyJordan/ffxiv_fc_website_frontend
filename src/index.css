@@ -74,9 +74,10 @@ code {
   flex-basis: 30%;
 }
 .characterInfo{
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   text-align: left;
-  vertical-align: bottom;
   margin-left: 10px
 }
 .charlabel{
@@ -140,6 +141,8 @@ code {
 .modalImage{
   max-width: 800px;
   max-height: 800px;
+  border-style: solid;
+  border-color: black;
 }
 .modalContainer{
   display: flex;
@@ -155,6 +158,9 @@ code {
 .modalClose {
   text-align: right;
   padding-bottom: 3px;
+}
+.pointer{
+  cursor: pointer;
 }
 .modalBackground{
   width: 100%;
@@ -180,18 +186,12 @@ code {
 }
 .gallery{
   display: grid;
-  grid-template-columns: repeat(7,1fr);
-  gap: 10px;
-  justify-items: center;
-  align-items:start;
-}
-.charactergallery{
-  display: grid;
   grid-template-columns: repeat(5,1fr);
   gap: 10px;
   justify-items: center;
   align-items:start;
 }
+
 .forms{ 
   border-radius: 25px;
   padding: 10px;
@@ -260,4 +260,13 @@ textarea{
 .deleteComment{
 justify-self: end;
 margin-right: 10px;
+}
+.characterULE{
+  text-decoration: underline;
+}
+.commentPicBox{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  margin-left: 5px;
 }

@@ -21,6 +21,7 @@ function ScreenshotForm({ characters, onNewScreenshot }) {
     data.append("image", e.target.image.files[0]);
     data.append("character_id", characterSelection);
     sendPictureToApi(data);
+    document.getElementById("screenshot_file").value = "";
   }
 
   function sendPictureToApi(data) {
@@ -47,7 +48,7 @@ function ScreenshotForm({ characters, onNewScreenshot }) {
       </div>
       <div className="screenshotForm">
         <form onSubmit={(e) => handleScreenShotSubmit(e)}>
-          <input type="file" name="image" />
+          <input type="file" name="image" id="screenshot_file" />
           <button type="submit">Upload image</button>
         </form>
       </div>
