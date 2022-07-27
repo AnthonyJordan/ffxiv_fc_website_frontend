@@ -1,4 +1,4 @@
-function CommentDisplay({ comment, user, onCommentDelete }) {
+function CommentDisplay({ comment, user, onCommentDelete, reverse }) {
   function deleteComment() {
     fetch(`/comments/${comment.id}`, {
       method: "DELETE",
@@ -8,16 +8,19 @@ function CommentDisplay({ comment, user, onCommentDelete }) {
       }
     });
   }
+
   const character_picture_url = comment.character_picture_url
     ? comment.character_picture_url
     : require("../../default_avatar.jpg");
+
   const deleteButton =
-    user.id === comment.user_id || user.admin ? (
+    user?.id === comment.user_id || user?.admin ? (
       <button onClick={deleteComment}>Delete</button>
     ) : null;
+
   return (
-    <div className="commentDisplay">
-      <div className="commentPicBox">
+    <div className={`commentDisplay ${reverse ? "reverse" : ""}`}>
+      <div className={`commentPicBox  ${reverse ? "orderLast" : ""}`}>
         <img
           className="commentPic"
           alt="character"
@@ -25,9 +28,10 @@ function CommentDisplay({ comment, user, onCommentDelete }) {
         />
         <label>{comment.character_name}</label>
       </div>
-
       <div className="commentBox">{comment.comment_text}</div>
-      <div className={"deleteComment"}>{deleteButton}</div>
+      <div className={`deleteComment  ${reverse ? "orderFirst" : ""}`}>
+        {deleteButton}
+      </div>
     </div>
   );
 }

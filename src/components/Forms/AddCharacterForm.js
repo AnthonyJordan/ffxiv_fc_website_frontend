@@ -9,6 +9,7 @@ function AddCharacterForm({ user, onAddCharacter }) {
     bio: "",
     user_id: user ? user.id : null,
   });
+
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -42,32 +43,31 @@ function AddCharacterForm({ user, onAddCharacter }) {
         });
       });
   }
+
   return (
     <div className="characterCreateForm forms">
       <form onSubmit={(e) => createCharacter(e)}>
         <div>Add New Character</div>
         <div>
-          <label>First Name: </label>
+          <div>First Name *</div>
           <input
             type="text"
             name="first_name"
             value={formData.first_name}
             onChange={handleChange}
           />
-          <label> *</label>
         </div>
         <div>
-          <label>Last Name: </label>
+          <div>Last Name *</div>
           <input
             type="text"
             name="last_name"
             value={formData.last_name}
             onChange={handleChange}
           />
-          <label> *</label>
         </div>
         <div>
-          <label>FC Role: </label>
+          <div>FC Role</div>
           <input
             type="text"
             name="role"
@@ -76,7 +76,7 @@ function AddCharacterForm({ user, onAddCharacter }) {
           />
         </div>
         <div>
-          <label>Personal House Location: </label>
+          <div>Personal House Location</div>
           <input
             type="text"
             name="house_location"
@@ -85,8 +85,13 @@ function AddCharacterForm({ user, onAddCharacter }) {
           />
         </div>
         <div>
-          <label>Bio: </label>
-          <textarea name="bio" value={formData.bio} onChange={handleChange} />
+          <div>Bio</div>
+          <textarea
+            className="formTextArea"
+            name="bio"
+            value={formData.bio}
+            onChange={handleChange}
+          />
         </div>
         <button type="submit">Submit</button>
         <div>* = required</div>

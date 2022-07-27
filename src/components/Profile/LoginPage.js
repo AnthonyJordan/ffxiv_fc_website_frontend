@@ -6,6 +6,7 @@ function LoginPage({ onLogin, user }) {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
@@ -28,14 +29,16 @@ function LoginPage({ onLogin, user }) {
       }
     });
   }
+
   if (user) {
     return <Redirect to="/profile" />;
   }
+
   return (
     <div className="loginPage">
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email</label>
+          <div>Email</div>
           <input
             type="text"
             id="email"
@@ -44,9 +47,9 @@ function LoginPage({ onLogin, user }) {
           ></input>
         </div>
         <div>
-          <label>Password</label>
+          <div>Password</div>
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

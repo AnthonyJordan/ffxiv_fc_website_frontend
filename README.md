@@ -1,3 +1,8 @@
+Hello there and welcome!
+
+This is a small Final Fantasy FC Website that I built using ReactJS and Ruby on Rails for my final project at Flatiron school.
+If you happen to stumble upon this, feel free to clone the repo if you want to use this for your own FC or guild or whatever and modify it however you wish.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

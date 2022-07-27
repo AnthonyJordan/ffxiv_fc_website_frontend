@@ -33,14 +33,16 @@ function SignUpPage({ onLogin, user }) {
       }
     });
   }
+
   if (user) {
     return <Redirect to="/profile" />;
   }
+
   return (
     <div className="signUpPage">
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email</label>
+          <div>Email</div>
           <input
             type="text"
             id="email"
@@ -49,25 +51,25 @@ function SignUpPage({ onLogin, user }) {
           ></input>
         </div>
         <div>
-          <label>Password</label>
+          <div>Password</div>
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <div>
-          <label>Confirm Password</label>
+          <div>Confirm Password</div>
           <input
-            type="text"
+            type="password"
             id="password"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           ></input>
         </div>
         <div>
-          <label>FC Invite Code</label>
+          <div>FC Invite Code</div>
           <input
             type="text"
             id="inviteCode"

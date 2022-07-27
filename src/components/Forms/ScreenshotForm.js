@@ -12,6 +12,7 @@ function ScreenshotForm({ characters, onNewScreenshot }) {
   function handleFormChange(e) {
     setCharacterSelection(e.target.value);
   }
+
   function handleScreenShotSubmit(e) {
     e.preventDefault();
     if (characterSelection === 0) {
@@ -36,6 +37,7 @@ function ScreenshotForm({ characters, onNewScreenshot }) {
       }
     });
   }
+
   return (
     <div className="screenshotBox">
       <div>Upload Screenshot</div>

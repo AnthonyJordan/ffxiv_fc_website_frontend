@@ -7,9 +7,11 @@ function DeleteCharacterForm({ characters, onCharacterDelete }) {
       {character.first_name + " " + character.last_name}
     </option>
   ));
+
   function handleFormChange(e) {
     setCharacterSelection(e.target.value);
   }
+
   function handleDeleteClick() {
     if (confirmation) {
       fetch(`/characters/${characterSelection}`, {
@@ -23,7 +25,7 @@ function DeleteCharacterForm({ characters, onCharacterDelete }) {
   }
 
   return (
-    <div className="deletecharacter forms">
+    <div className="deleteCharacter forms">
       <div>Delete Character</div>
       <div className="character-select">
         <select name="character_id" onChange={(e) => handleFormChange(e)}>

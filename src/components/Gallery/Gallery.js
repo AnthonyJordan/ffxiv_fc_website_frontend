@@ -6,6 +6,7 @@ function Gallery({ character, user }) {
   const [screenshots, setScreenshots] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [ssSelection, setSSSelection] = useState([]);
+
   useEffect(() => {
     character
       ? fetch(`/characters/${character.id}/screenshots`).then((r) => {
@@ -19,16 +20,19 @@ function Gallery({ character, user }) {
           }
         });
   }, [character]);
+
   function handleDeleteScreenshot(screenshotId) {
     const updatedScreenshots = screenshots.filter(
       (screenshot) => screenshot.id !== screenshotId
     );
     setScreenshots(updatedScreenshots);
   }
+
   function onSSClick(screenshot) {
     setSSSelection(screenshot);
     setModalOpen(true);
   }
+
   const ssCards = screenshots.map((screenshot) => (
     <ScreenshotCard
       key={screenshot.id}
@@ -36,11 +40,13 @@ function Gallery({ character, user }) {
       handleClick={onSSClick}
     />
   ));
+
   if (modalOpen) {
     document.body.classList.add("activeModal");
   } else {
     document.body.classList.remove("activeModal");
   }
+
   return (
     <div className="gallery">
       {ssCards}

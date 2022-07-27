@@ -5,21 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color:rgba(255, 255, 255, 0.768)
+  color:rgba(255, 255, 255, 0.722)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .main{
   height: 92vh;
 }
-.logout{
-  color: rgb(143, 151, 236);
-  text-decoration: underline;
-  font-weight: bold;
-}
+
 .navbar{
   display: flex;
   align-items: center;
@@ -35,10 +32,26 @@ code {
   background-position: center;
   background-size: 25%;
 }
+
 .navButton{
   font-weight: bold;
-  color: rgb(143, 151, 236);
+  color: rgb(143, 211, 236);
 }
+
+.navButton:hover{
+  color: rgb(143, 169, 236);
+}
+
+.logout{
+  color: rgb(143, 211, 236);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.logout:hover{
+  color: rgb(143, 169, 236);
+}
+
 .display{
   display: grid;
   background-image:linear-gradient(
@@ -56,13 +69,14 @@ code {
   min-height: 91.7vh;
   text-align: center;
 }
-.characters{
+
+.charactersOnProfile{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.characterdisplay{
+.characterDisplay{
   background-color: rgb(41, 16, 63, .7);
   border-radius: 25px;
   margin: 10px;
@@ -73,6 +87,7 @@ code {
   padding-right: 20px;
   flex-basis: 30%;
 }
+
 .characterInfo{
   display: flex;
   flex-direction: column;
@@ -80,9 +95,11 @@ code {
   text-align: left;
   margin-left: 10px
 }
+
 .charlabel{
   font-weight: bold;
 }
+
 .characterPictureBox{
   display: inline-block;
   background-color: rgba(58, 54, 150, 0.7);
@@ -103,6 +120,7 @@ code {
 .characterPictureForm button{
   border-radius: 25px;
 }
+
 .characterPictureForm input{
   border-radius: 25px;
 }
@@ -127,13 +145,15 @@ code {
 .screenshotForm button{
   border-radius: 25px;
 }
+
 .screenshotForm input{
   border-radius: 25px;
 }
+
 .characterCreateForm{
   background-color: rgba(150, 54, 113, 0.7);
- 
 }
+
 .screenshot{
   max-width: 200px;
   max-height: 200px;
@@ -144,6 +164,7 @@ code {
   border-style: solid;
   border-color: black;
 }
+
 .modalContainer{
   display: flex;
   flex-direction: column;
@@ -154,14 +175,18 @@ code {
   border-color: black;
   margin-top: auto;
   margin-bottom: auto;
+  max-width: 1000px;
 }
+
 .modalClose {
   text-align: right;
   padding-bottom: 3px;
 }
+
 .pointer{
   cursor: pointer;
 }
+
 .modalBackground{
   width: 100%;
   height: 100%;
@@ -177,6 +202,7 @@ code {
   z-index: 2;
   overflow-y:auto;
 }
+
 .ssCard{
   background-color: rgba(150, 54, 113, 0.7);
   border-radius: 25px;
@@ -184,6 +210,7 @@ code {
   border-style: solid;
   border-color: black;
 }
+
 .gallery{
   display: grid;
   grid-template-columns: repeat(5,1fr);
@@ -199,31 +226,38 @@ code {
   padding-right: 20px;
 }
 
-textarea{
+.forms div{
+  margin: 3px;
+}
+
+.formTextArea{
   height: 100px;
   width: 200px;
 }
+
 .characterForms{
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
 }
 
-.deletecharacter{
+.deleteCharacter{
   background-color: rgba(166, 48, 30, 0.7);
 }
+
 .characterEditForm{
   background-color: rgba(20, 94, 99, 0.7);
 }
 
-.characterslist{
+.charactersList{
   border-radius: 25px;
   background-color: rgba(201, 48, 120, 0.7);
   text-align: left;
   margin-left: 10px; 
   
 }
-.characterspage{
+
+.charactersPage{
   display: grid;
   grid-template-columns: 10% 1fr;
 }
@@ -234,6 +268,7 @@ textarea{
   margin: 20px;
   padding: 5px;
 }
+
 .activeModal{
   overflow-y: hidden;
 }
@@ -243,30 +278,67 @@ textarea{
   max-width: 100px;
   max-height: 100px;
 }
+
 .commentDisplay{
   border-radius: 25px;
   background-color: rgba(90, 98, 192, 0.7);
   display:grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 120px 1fr 10%;
   justify-items: start;
   align-items: center;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.commentBox{
-  margin-left: 10px;
- 
+
+.commentTextArea{
+  height: 50px;
 }
-.deleteComment{
-justify-self: end;
-margin-right: 10px;
-}
-.characterULE{
-  text-decoration: underline;
-}
+
 .commentPicBox{
   display: flex;
   flex-direction: column;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.deleteComment{
+  justify-self: end;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.reverse{
+  grid-template-columns: 10% 1fr 120px;
+  justify-items: end;
+}
+
+.orderFirst{
+  justify-self: start;
+  order:-1
+}
+
+.orderLast{
+  order:2
+}
+
+.characterULE{
+  text-decoration: underline;
+  color: rgb(97, 205, 245);
+}
+
+.characterULE:hover{
+  color: rgb(143, 169, 236);
+}
+
+.active{
+  color: rgb(107, 137, 233);
+}
+
+.loginSignUp{
+  justify-self: center;
+  align-self: start;
+  border-radius: 25px;
+  padding: 10px;
+  background-color: rgba(240, 100, 75, 0.7);
 }

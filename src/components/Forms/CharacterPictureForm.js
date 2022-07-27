@@ -11,6 +11,7 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
   function handleFormChange(e) {
     setCharacterSelection(e.target.value);
   }
+
   function handleCharacterPicSubmit(e) {
     e.preventDefault();
     if (characterSelection === 0) {
@@ -31,6 +32,7 @@ function CharacterPictureForm({ characters, onCharacterUpdate }) {
       .then((res) => res.json())
       .then((character) => onCharacterUpdate(character));
   }
+
   return (
     <div className="characterPictureBox">
       <div>Upload Character Picture</div>

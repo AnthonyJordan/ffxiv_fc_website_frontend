@@ -14,12 +14,14 @@ function Profile({ user }) {
   const characterDisplays = characters.map((character) => (
     <CharacterDisplay key={character.id} character={character} />
   ));
+
   const characterGalleries = characters.map((character) => (
-    <div className="profileGallery">
+    <div key={character.id} className="profileGallery">
       {character.first_name + " " + character.last_name}
       <Gallery character={character} user={user} />
     </div>
   ));
+
   useEffect(() => {
     if (user) {
       fetch(`/user/${user.id}/characters`).then((r) => {
@@ -34,6 +36,7 @@ function Profile({ user }) {
     const updatedCharacters = [...characters, character];
     setCharacters(updatedCharacters);
   }
+
   function handleCharaterUpdate(updatedCharacter) {
     const updatedCharacters = characters.map((character) => {
       if (character.id === updatedCharacter.id) {
@@ -63,9 +66,10 @@ function Profile({ user }) {
   if (!user) {
     return <Redirect to="/" />;
   }
+
   return (
     <div className="profile">
-      <div className="characters">{characterDisplays}</div>
+      <div className="charactersOnProfile">{characterDisplays}</div>
       <div>
         <CharacterPictureForm
           characters={characters}

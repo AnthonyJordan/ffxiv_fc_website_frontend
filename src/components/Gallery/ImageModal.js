@@ -4,9 +4,11 @@ import CommentDisplay from "./CommentDisplay";
 
 function ImageModal({ screenshot, closeModal, user, onSSDelete }) {
   const [comments, setComments] = useState([]);
+
   function handleAddComment(newComment) {
     setComments([...comments, newComment]);
   }
+
   useEffect(() => {
     fetch(`/screenshots/${screenshot.id}/comments`)
       .then((r) => r.json())
@@ -30,6 +32,7 @@ function ImageModal({ screenshot, closeModal, user, onSSDelete }) {
       }
     });
   }
+
   const deleteButton =
     user?.id === screenshot.user_id || user?.admin ? (
       <button onClick={deleteScreenshot}>Delete Picture</button>
@@ -42,16 +45,26 @@ function ImageModal({ screenshot, closeModal, user, onSSDelete }) {
       onAddComment={handleAddComment}
     />
   ) : null;
+
+  var count = 0;
+
   const commentElements = comments
-    ? comments.map((comment) => (
-        <CommentDisplay
-          key={comment.id}
-          comment={comment}
-          user={user}
-          onCommentDelete={handleDeleteComment}
-        />
-      ))
+    ? comments.map(
+        (comment) => (
+          count++,
+          (
+            <CommentDisplay
+              key={comment.id}
+              comment={comment}
+              user={user}
+              onCommentDelete={handleDeleteComment}
+              reverse={count % 2 === 0}
+            />
+          )
+        )
+      )
     : null;
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">

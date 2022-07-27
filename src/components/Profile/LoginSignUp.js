@@ -15,8 +15,9 @@ function LoginSignUp({ onLogin, user }) {
       <button onClick={() => setLoginBool(!loginBool)}>Login</button>
     </div>
   );
+
   return (
-    <div className="LoginSignUp">
+    <div className="loginSignUp">
       {button}
       {loginBool ? (
         <LoginPage onLogin={onLogin} user={user} />

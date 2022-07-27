@@ -3,6 +3,7 @@ function AddCommentForm({ user, screenshot, onAddComment }) {
   const [comment, setComment] = useState("");
   const [characterSelection, setCharacterSelection] = useState(0);
   const [characters, setCharacters] = useState([]);
+
   useEffect(() => {
     if (user) {
       fetch(`/user/${user.id}/characters`).then((r) => {
@@ -16,9 +17,11 @@ function AddCommentForm({ user, screenshot, onAddComment }) {
   function handleChange(e) {
     setComment(e.target.value);
   }
+
   function handleCharacterSelect(e) {
     setCharacterSelection(e.target.value);
   }
+
   function addComment(e) {
     e.preventDefault();
     if (characterSelection === 0) {
@@ -37,11 +40,13 @@ function AddCommentForm({ user, screenshot, onAddComment }) {
       .then((res) => res.json())
       .then((comment) => onAddComment(comment), setComment(""));
   }
+
   const options = characters.map((character) => (
     <option key={character.id} value={character.id}>
       {character.first_name + " " + character.last_name}
     </option>
   ));
+
   return (
     <div className="addCommentForm">
       <div onSubmit={(e) => addComment(e)}>
@@ -56,7 +61,14 @@ function AddCommentForm({ user, screenshot, onAddComment }) {
               {options}
             </select>
           </div>
-          <input name="comment" value={comment} onChange={handleChange} />
+          <div>
+            <textarea
+              className="commentTextArea"
+              name="comment"
+              value={comment}
+              onChange={handleChange}
+            />
+          </div>
           <button type="submit">Submit</button>
         </form>
       </div>

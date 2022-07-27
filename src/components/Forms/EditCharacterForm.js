@@ -15,6 +15,7 @@ function EditCharacterForm({ user, characters, onCharacterUpdate }) {
       {character.first_name + " " + character.last_name}
     </option>
   ));
+
   function handleChange(e) {
     setFormData({
       ...formData,
@@ -56,17 +57,27 @@ function EditCharacterForm({ user, characters, onCharacterUpdate }) {
     const characterChoice = characters.find(
       (character) => character.id == e.target.value
     );
-    const newFormData = {
-      first_name: characterChoice.first_name,
-      last_name: characterChoice.last_name,
-      house_location: characterChoice.house_location,
-      role: characterChoice.role,
-      bio: characterChoice.bio,
-      user_id: user ? user.id : null,
-    };
+    const newFormData = characterChoice
+      ? {
+          first_name: characterChoice.first_name,
+          last_name: characterChoice.last_name,
+          house_location: characterChoice.house_location,
+          role: characterChoice.role,
+          bio: characterChoice.bio,
+          user_id: user ? user.id : null,
+        }
+      : {
+          first_name: "",
+          last_name: "",
+          house_location: "",
+          role: "",
+          bio: "",
+          user_id: user ? user.id : null,
+        };
     setCharacterSelection(e.target.value);
     setFormData(newFormData);
   }
+
   return (
     <div className="characterEditForm forms">
       <form onSubmit={(e) => editCharacter(e)}>
@@ -81,27 +92,25 @@ function EditCharacterForm({ user, characters, onCharacterUpdate }) {
           </select>
         </div>
         <div>
-          <label>First Name: </label>
+          <div>First Name *</div>
           <input
             type="text"
             name="first_name"
             value={formData.first_name}
             onChange={handleChange}
           />
-          <label> *</label>
         </div>
         <div>
-          <label>Last Name: </label>
+          <div>Last Name *</div>
           <input
             type="text"
             name="last_name"
             value={formData.last_name}
             onChange={handleChange}
           />
-          <label> *</label>
         </div>
         <div>
-          <label>FC Role: </label>
+          <div>FC Role</div>
           <input
             type="text"
             name="role"
@@ -110,7 +119,7 @@ function EditCharacterForm({ user, characters, onCharacterUpdate }) {
           />
         </div>
         <div>
-          <label>Personal House Location: </label>
+          <div>Personal House Location</div>
           <input
             type="text"
             name="house_location"
@@ -119,8 +128,13 @@ function EditCharacterForm({ user, characters, onCharacterUpdate }) {
           />
         </div>
         <div>
-          <label>Bio: </label>
-          <textarea name="bio" value={formData.bio} onChange={handleChange} />
+          <div>Bio</div>
+          <textarea
+            className="formTextArea"
+            name="bio"
+            value={formData.bio}
+            onChange={handleChange}
+          />
         </div>
         <button type="submit">Submit</button>
         <div>* = required</div>

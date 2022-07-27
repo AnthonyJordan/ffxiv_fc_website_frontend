@@ -11,6 +11,7 @@ import React, { useState, useEffect } from "react";
 function App() {
   const [user, setUser] = useState(null);
   const history = useHistory();
+
   useEffect(() => {
     fetch("/users/sign_in").then((r) => {
       if (r.ok) {
@@ -18,10 +19,12 @@ function App() {
       }
     });
   }, []);
+
   function logout() {
     setUser(null);
     history.push("/");
   }
+
   return (
     <div className="main">
       <NavBar user={user} onLogout={logout} />
@@ -30,7 +33,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/members">
+          <Route path="/members">
             <CharactersPage user={user} />
           </Route>
           <Route exact path="/gallery">
