@@ -342,3 +342,24 @@ code {
   padding: 10px;
   background-color: rgba(240, 100, 75, 0.7);
 }
+
+.homepageImage{
+  max-width: 1400px;
+  max-height: 1000px;
+  border-radius: 10%;
+}
+
+h5{
+  margin-top: 2px;
+}
+
+.fcAbout{
+  display: inline;
+  background-image: linear-gradient(to right, rgba(59, 53, 235, 0.7), rgba(221, 37, 184, 0.7));
+  padding: 5px;
+  border-radius: 25px;
+}
+
+.fcTag{
+  color: rgb(245, 130, 216);
+}

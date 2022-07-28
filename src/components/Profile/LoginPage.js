@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 function LoginPage({ onLogin, user }) {
   const [email, setEmail] = useState("");
@@ -59,6 +59,9 @@ function LoginPage({ onLogin, user }) {
 
         <div>{errors}</div>
       </form>
+      <NavLink exact to="forgot_password">
+        Forgot Password?
+      </NavLink>
     </div>
   );
 }

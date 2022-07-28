@@ -7,6 +7,8 @@ import LoginSignUp from "./components/Profile/LoginSignUp";
 import Gallery from "./components/Gallery/Gallery";
 import Profile from "./components/Profile/Profile";
 import React, { useState, useEffect } from "react";
+import PasswordResetRequest from "./components/Forms/PasswordResetRequest";
+import NewPasswordForm from "./components/Forms/NewPasswordForm";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +46,12 @@ function App() {
           </Route>
           <Route exact path="/profile">
             <Profile user={user} onUserUpdate={setUser} />
+          </Route>
+          <Route exact path="/forgot_password">
+            <PasswordResetRequest />
+          </Route>
+          <Route exact path="/reset_password">
+            <NewPasswordForm />
           </Route>
         </Switch>
       </div>
