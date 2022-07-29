@@ -14,7 +14,7 @@ code {
 }
 
 .main{
-  height: 92vh;
+ height: 100vh;
 }
 
 .navbar{
@@ -65,8 +65,8 @@ code {
   padding-bottom: 10px;
   position: relative;
   top: 51px;
-  height: fit-content;
-  min-height: 91.7vh;
+  min-height: calc(100% - 71px);
+  height: auto;
   text-align: center;
 }
 
