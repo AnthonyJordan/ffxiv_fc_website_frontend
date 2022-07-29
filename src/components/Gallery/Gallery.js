@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ImageModal from "./ImageModal";
 import ScreenshotCard from "./ScreenshotCard";
 
-function Gallery({ character, user }) {
+function Gallery({ character, user, profile }) {
   const [screenshots, setScreenshots] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [ssSelection, setSSSelection] = useState([]);
@@ -20,6 +20,14 @@ function Gallery({ character, user }) {
           }
         });
   }, [character]);
+
+  useEffect(() => {
+    character
+      ? profile
+        ? (document.title = "Usagi | Profile")
+        : (document.title = "Usagi | Members")
+      : (document.title = "Usagi | Gallery");
+  }, []);
 
   function handleDeleteScreenshot(screenshotId) {
     const updatedScreenshots = screenshots.filter(

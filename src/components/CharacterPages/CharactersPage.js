@@ -16,6 +16,10 @@ function CharactersPage({ user }) {
     });
   }, []);
 
+  useEffect(() => {
+    document.title = "Usagi | Members";
+  }, []);
+
   return (
     <div className="charactersPage">
       <Route path={"/members"}>

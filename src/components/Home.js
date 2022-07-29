@@ -1,4 +1,9 @@
+import React, { useEffect } from "react";
+
 function Home() {
+  useEffect(() => {
+    document.title = "Usagi | Home";
+  }, []);
   return (
     <div className="homepage">
       <h1>

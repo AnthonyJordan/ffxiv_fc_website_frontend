@@ -18,9 +18,13 @@ function Profile({ user }) {
   const characterGalleries = characters.map((character) => (
     <div key={character.id} className="profileGallery">
       {character.first_name + " " + character.last_name}
-      <Gallery character={character} user={user} />
+      <Gallery character={character} user={user} profile={true} />
     </div>
   ));
+
+  useEffect(() => {
+    document.title = "Usagi | Profile";
+  }, []);
 
   useEffect(() => {
     if (user) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginPage from "./LoginPage";
 import SignUpPage from "./SignUpPage";
 
@@ -15,6 +15,9 @@ function LoginSignUp({ onLogin, user }) {
       <button onClick={() => setLoginBool(!loginBool)}>Login</button>
     </div>
   );
+  useEffect(() => {
+    document.title = "Usagi | Login";
+  }, []);
 
   return (
     <div className="loginSignUp">
