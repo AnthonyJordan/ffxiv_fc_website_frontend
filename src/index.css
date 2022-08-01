@@ -159,7 +159,7 @@ code {
   max-height: 200px;
 }
 .modalImage{
-  max-width: 800px;
+  max-width: 1200px;
   max-height: 800px;
   border-style: solid;
   border-color: black;
@@ -175,7 +175,6 @@ code {
   border-color: black;
   margin-top: auto;
   margin-bottom: auto;
-  max-width: 1000px;
 }
 
 .modalClose {
